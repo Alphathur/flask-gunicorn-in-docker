@@ -1,2 +1,2 @@
 # data-api
-A flask application fetching data from mysql
+A Restful application using flask and fetching data from mysql
