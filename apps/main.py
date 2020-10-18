@@ -3,8 +3,8 @@ import decimal
 import flask.json
 from flask import Flask, jsonify, request
 
-from app.utils import error_response
-from app import data_student
+import data_student
+from utils import error_response
 
 
 class MyJSONEncoder(flask.json.JSONEncoder):

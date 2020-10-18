@@ -10,4 +10,4 @@ RUN pip3 install -r /app/requirements.txt
 ADD . /app
 
 EXPOSE 8000
-CMD ["gunicorn", "--config", "gunicorn_config.py", "app.main:app"]
+CMD ["gunicorn", "--config", "gunicorn_config.py", "apps.main:app"]
