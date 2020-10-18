@@ -7,7 +7,7 @@ from pathlib import Path
 # Of course, you can use `os` instead of `pathlib`, but `pathlib` is good ;)
 sys.path.append(str(Path(__file__).resolve().parent.parent))  # add project root to path
 
-import apps.data_student
+import apps.data_student as ds
 from apps.utils import error_response
 
 class MyJSONEncoder(flask.json.JSONEncoder):
@@ -33,7 +33,7 @@ def hi():
 @app.route("/students", methods=["GET"])
 def list_student():
     app.logger.info(request)
-    res = data_student.list_students()
+    res = ds.list_students()
     return jsonify(res)
 
 
@@ -42,7 +42,7 @@ def get_student_by_id(id):
     app.logger.info(request)
     if not id:
         return jsonify(error_response(50001))
-    res = data_student.get_student(id)
+    res = ds.get_student(id)
     return jsonify(res)
 
 
@@ -51,7 +51,7 @@ def delete_student_by_id(id):
     app.logger.info(request)
     if not id:
         return jsonify(error_response(50001))
-    data_student.delete_student(id)
+    ds.delete_student(id)
     return "DELETED"
 
 
@@ -60,7 +60,7 @@ def save_student():
     app.logger.info(request)
     if not request.data:
         return jsonify(error_response(50001))
-    res = data_student.save_student(request.get_json(force=True))
+    res = ds.save_student(request.get_json(force=True))
     return jsonify(res)
 
 
