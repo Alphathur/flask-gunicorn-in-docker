@@ -1,7 +1,6 @@
 import pymysql
 from dbutils.pooled_db import PooledDB
-
-from mysql_config import MYSQL_CONFIG
+from apps.mysql_config import MYSQL_CONFIG
 
 
 class Connect(object):
