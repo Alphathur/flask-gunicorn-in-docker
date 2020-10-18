@@ -22,6 +22,11 @@ app.json_encoder = MyJSONEncoder
 app.config['JSON_AS_SCII'] = False
 
 
+@app.route("/", methods=["GET"])
+def hi():
+    return "Hello World"
+
+
 @app.route("/students", methods=["GET"])
 def list_student():
     app.logger.info(request)
