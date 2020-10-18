@@ -1,11 +1,14 @@
 import decimal
-
 import flask.json
+import sys
 from flask import Flask, jsonify, request
 
-import data_student
-from utils import error_response
+from pathlib import Path
+# Of course, you can use `os` instead of `pathlib`, but `pathlib` is good ;)
+sys.path.append(str(Path(__file__).resolve().parent.parent))  # add project root to path
 
+import apps.data_student
+from apps.utils import error_response
 
 class MyJSONEncoder(flask.json.JSONEncoder):
     def default(self, obj):
