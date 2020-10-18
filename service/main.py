@@ -66,7 +66,7 @@ def save_student():
 
 
 def main():
-    log_filename = './apiserver.log'
+    log_filename = './server.log'
     formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
     handler = RotatingFileHandler(log_filename, maxBytes=10000000, backupCount=5)
     handler.setFormatter(formatter)
