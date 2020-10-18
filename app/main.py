@@ -3,8 +3,8 @@ import decimal
 import flask.json
 from flask import Flask, jsonify, request
 
-from common.utils import error_response
-from service import data_student
+from app.utils import error_response
+from app import data_student
 
 
 class MyJSONEncoder(flask.json.JSONEncoder):
@@ -17,6 +17,7 @@ class MyJSONEncoder(flask.json.JSONEncoder):
 
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 app.json_encoder = MyJSONEncoder
 app.config['JSON_AS_SCII'] = False
 

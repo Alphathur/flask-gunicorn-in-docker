@@ -1,4 +1,4 @@
-from common.mysql_pool_connection import MYSQL_pool_connection
+from app.mysql_pool_connection import MYSQL_pool_connection
 
 
 def list_students():

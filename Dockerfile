@@ -2,12 +2,12 @@ FROM python:3.6.5
 
 MAINTAINER alphathur
 
-RUN mkdir -p /app
-RUN mkdir -p /logs
-COPY * ./app/
-
+RUN mkdir /app
 WORKDIR /app
-RUN pip install -r /app/requirements.txt
-EXPOSE 8000
 
-CMD ["gunicorn", "-b", "0.0.0.0:9000","--timeout", "1200", "--keep-alive", "60", "--reload", "service.main:app"]
+ADD requirements.txt /app
+RUN pip3 install -r /app/requirements.txt
+ADD . /app
+
+EXPOSE 8000
+CMD ["gunicorn", "--config", "gunicorn_config.py", "app.wsgi:app"]
