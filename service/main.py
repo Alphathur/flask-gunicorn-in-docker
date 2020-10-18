@@ -1,6 +1,4 @@
 import decimal
-import logging
-from logging.handlers import RotatingFileHandler
 
 import flask.json
 from flask import Flask, jsonify, request
@@ -18,15 +16,7 @@ class MyJSONEncoder(flask.json.JSONEncoder):
         return super(MyJSONEncoder, self).default(obj)
 
 
-config = {
-    "DEBUG": True,  # some Flask specific configs
-    "CACHE_TYPE": "filesystem",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 0,
-    "CACHE_DIR": './api_caching'
-}
 app = Flask(__name__)
-# tell Flask to use the above defined config
-app.config.from_mapping(config)
 app.json_encoder = MyJSONEncoder
 app.config['JSON_AS_SCII'] = False
 
@@ -66,12 +56,6 @@ def save_student():
 
 
 def main():
-    log_filename = './server.log'
-    formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
-    handler = RotatingFileHandler(log_filename, maxBytes=10000000, backupCount=5)
-    handler.setFormatter(formatter)
-    handler.setLevel(logging.INFO)
-    app.logger.addHandler(handler)
     app.run(host='0.0.0.0', port=8000)
 
 
