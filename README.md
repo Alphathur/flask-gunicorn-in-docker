@@ -1,5 +1,5 @@
-# data-api
-A Restful application using flask and fetching data from mysql
+# flask-gunicorn-in-docker
+A Restful application using flask and gunicorn running in docker, and fetching data from mysql
 
 ## Run in local
 ```bash
@@ -18,8 +18,8 @@ mysql -hlocalhost -uroot -pmysql520
 
 ### Run Flask application and Gunicorn in docker
 ```bash
-docker build -t data-api:1.0 .
-docker run -d -p8000:8000 --name dataapi --net=mysql-network data-api:1.0
+docker build -t flask-gunicorn-in-docker:1.0 .
+docker run -d -p8000:8000 --name flask-gunicorn-in-docker --net=mysql-network data-api:1.0
 ```
 
 ## Test your api
