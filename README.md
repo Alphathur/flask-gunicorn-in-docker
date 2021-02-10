@@ -15,7 +15,11 @@ docker cp student.sql mariadb:.
 docker exec -it mariadb /bin/bash
 mysql -hlocalhost -uroot -pmysql520
 ```
-
+```bash
+create database demo;
+use demo;
+source user.sql;
+```
 ### Run Flask application and Gunicorn in docker
 ```bash
 docker build -t flask-gunicorn-in-docker:1.0 .
